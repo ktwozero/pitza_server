@@ -1,18 +1,21 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+#from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.contrib.auth.models import User
 from .models import ChatRoom
 from .serializers import ChatRoomSerializer
+from rest_framework.permissions import AllowAny
 
 class ChatRoomCreateView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+    #permission_classes = [IsAuthenticated]
 
     def post(self, request):
         post_id = request.data.get("post_id")
         receiver_id = request.data.get("receiver_id")
-        sender = request.user
+        sender = User.objects.get(id=1)
+        #sender = request.user
 
         try:
             receiver = User.objects.get(id=receiver_id)
