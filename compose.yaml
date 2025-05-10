@@ -16,6 +16,8 @@ services:
       - ./mysql:/etc/mysql/conf.d
     depends_on:
       - db
+    restart: unless-stopped
+
   minio:
     image: minio/minio
     ports:

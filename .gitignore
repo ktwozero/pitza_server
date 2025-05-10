@@ -44,3 +44,9 @@ data/db/
 
 # env
 .env
+
+socket_server/node_modules/
+# socket_server 예외 처리
+!socket_server/server.js
+!socket_server/package.json
+!socket_server/package-lock.json
