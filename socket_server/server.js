@@ -19,7 +19,7 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("✅ 연결됨:", socket.id);
+  console.log("연결됨:", socket.id);
 
   socket.on("join_room", (roomId) => {
     socket.join(roomId);
@@ -45,5 +45,5 @@ app.post("/socket/message", (req, res) => {
 });
 
 server.listen(3001, () => {
-  console.log("🚀 socket.io 서버 실행 중 (http://localhost:3001)");
+  console.log("socket.io 서버 실행 중 (http://localhost:3001)");
 });
