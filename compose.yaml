@@ -33,3 +33,17 @@ services:
       interval: 30s
       timeout: 20s
       retries: 10
+  socket_server:
+    build:
+      context: ./socket_server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
